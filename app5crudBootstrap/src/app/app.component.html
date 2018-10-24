@@ -1,0 +1,99 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <div>
+    <h1>Administración de alumnos</h1>
+      <table class="table table-bordered" *ngIf="hayRegistros(); else nohayAlumnos">
+        <tr>
+          <td>Matricula</td><td>Nombre</td><td>Edad</td><td>Carrera</td><td colspan="2" style="text-align: center">Opciones</td>
+        </tr>
+        <tr *ngFor="let alumno of listaAlumnos">
+          <td>{{alumno.Matricula}}</td>
+          <td>{{alumno.Nombre}}</td>
+          <td>{{alumno.Edad}}</td>
+          <td>{{alumno.Carrera}}</td>
+          <td><button style="color: red;" class="btn btn-link" (click)="borrar(alumno)">Eliminar</button></td>
+          <td><button class="btn btn-link" (click)="seleccionar(alumno)">Seleccionar</button></td>
+        </tr>
+      </table>
+      <ng-template #nohayAlumnos>
+          <table class="table table-bordered">
+            <tr>
+              <td><p>No hay alumnos.</p></td>
+            </tr>
+          </table>
+      </ng-template>
+
+      <div class="card">
+          <div class="card-header">
+              Agregar elemento
+          </div>
+          <div class="card-body">
+              <div class="card-text">
+
+                <div class="row" style="padding-bottom: 10px;">
+
+                    <div class="col-sm-2 col-md-2 col-xs-12">
+                      <label for="">Matricula:</label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-xs-12">
+                        <input type="number" [(ngModel)]="alumno.Matricula" />
+                    </div>
+
+                  </div>
+
+                  <div class="row" style="padding-bottom: 10px;">
+
+                      <div class="col-sm-2 col-md-2 col-xs-12">
+                        <label for="">Nombre</label>
+                      </div>
+                      <div class="col-sm-4 col-md-4 col-xs-12">
+                          <input type="text" [(ngModel)]="alumno.Nombre" />
+                      </div>
+
+                    </div>
+
+                  <div class="row" style="padding-bottom: 10px;">
+
+                      <div class="col-sm-2 col-md-2 col-xs-12">
+                        <label for="">Edad</label>
+                      </div>
+                      <div class="col-sm-4 col-md-4 col-xs-12">
+                          <input type="number" [(ngModel)]="alumno.Edad" />
+                      </div>
+
+                    </div>
+
+
+                    <div class="row" style="padding-bottom: 10px;">
+
+                        <div class="col-sm-2 col-md-2 col-xs-12">
+                          <label for="">Carrera</label>
+                        </div>
+                        <div class="col-sm-4 col-md-4 col-xs-12">
+                            <input type="text" [(ngModel)]="alumno.Carrera" />
+                        </div>
+
+                      </div>
+
+              </div>
+
+              <div class="row" style="padding-bottom: 10px;">
+                  <div class="col-sm-2 col-md-2 col-xs-12" style="padding-bottom: 10px;">
+                      <button style="width: 100px" class="btn btn-primary" (click)="agregar()">Agregar</button>
+                  </div>
+                  <div class="col-sm-2 col-md-2 col-xs-12" style="padding-bottom: 10px;">
+                      <button style="width: 100px" class="btn btn-success"  (click)="modificar()">Modificar</button>
+                  </div>
+              </div>
+
+
+          </div>
+      </div>
+
+  </div>
+
+</div>
+
+<div style="clear: both;height: 60px;"></div>
+
+<router-outlet></router-outlet>
