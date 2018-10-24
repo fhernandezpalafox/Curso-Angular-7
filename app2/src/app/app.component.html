@@ -1,0 +1,15 @@
+<div>
+  <p>Nombre del Alumno:{{nombre}}</p>
+  <p>Edad:{{edad}}</p>
+  <p *ngIf="edad>=18">Es mayor de edad.</p>
+  <table style="border: 1px solid #ccc;">
+    <tr>
+      <td>Carreras</td>
+    </tr>
+    <tr *ngFor="let carrera of carreras">
+      <td style="border: 1px solid #ccc;">{{carrera}}</td>
+    </tr>
+  </table>
+</div>
+
+<router-outlet></router-outlet>
